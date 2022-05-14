@@ -1,12 +1,11 @@
-# Name: Word List Class
-# Description: Provide adding/deleting/sending World words.
+# Name: Word List Microservice
+# Description: Provide adding/deleting/sending Wordle words.
 #
 
 
-def get_request():
+def get_request() -> str:
     """
     Read "temp.txt" and get a request from user.
-    :return:
     """
     try:
         with open("temp.txt", "r") as temp:
@@ -19,11 +18,10 @@ def get_request():
     return req
 
 
-def reply(msg: str):
+def reply(msg: str) -> None:
     """
     Write message to temp.txt
-    :param msg: str message to be sent to user
-    :return:
+    :param msg: str. message to be sent to user
     """
     try:
         with open("temp.txt", "w") as temp:
@@ -36,7 +34,6 @@ def reply(msg: str):
 
 
 class WordList:
-
     def __init__(self, wordFile: str):
         """
         Initialize WordList Class
@@ -46,19 +43,17 @@ class WordList:
         self.words = []
         self.load_file()
 
-    def load_file(self):
+    def load_file(self) -> None:
         """
         Read wordFile and store words to self.words
-        :return:
         """
         with open(self.file, 'r') as file:
             for line in file:
                 self.words.append(line)
 
-    def get_word(self):
+    def get_word(self) -> None:
         """
-        return self.words
-        :return: self.words  list of words
+        Return self.words
         """
         words = ""
         for item in self.words:
@@ -67,11 +62,11 @@ class WordList:
         with open("temp.txt", "a") as temp:
             temp.write(words)
 
-    def add_word(self, a_word: str):
+    def add_word(self, a_word: str) -> None:
         """
-        add a word to wordFile. append it to the eof.
-        :param a_word: a 5-letter word.
-        :return:
+        Append a word to self.file.
+        If the given word is alreayd in self.file, it will reply("-1").
+        :param a_word: str. a 5-letter word.
         """
         if a_word + '\n' not in self.words:
             self.words.append(a_word + '\n')
@@ -82,11 +77,10 @@ class WordList:
         else:
             reply("-1")  # a_word is already in self.words
 
-    def delete_word(self, a_word: str):
+    def delete_word(self, a_word: str) -> None:
         """
-        delete a word in wordFile.
-        :param a_word: a 5-letter word
-        :return:
+        Delete a word in wordFile.
+        :param a_word: str. a 5-letter word
         """
         if a_word + '\n' in self.words:
             self.words.remove(a_word + '\n')

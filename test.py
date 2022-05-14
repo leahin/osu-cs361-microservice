@@ -1,3 +1,6 @@
+# A dummy client program to test Word List microservice.
+# Enter either add(word), delete(word), get() to test microservice.
+# Other keywords will do nothing or can crash the program.
 
 if __name__ == '__main__':
 
