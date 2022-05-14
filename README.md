@@ -15,5 +15,5 @@ A simple microservice communicates via a text file. It provides the following se
 5. If there's an error or failed requests, the microservice will clear temp.txt and write "-1" instead.
 
 # how to test the microservice
-1. text.py is a dummy client file and can be used to test the microservice.
+1. test.py is a dummy client file and can be used to test the microservice.
 2. Simply run $python3 test.py then enter either add(word), delete(word), or get() to test if temp.txt and archive.txt are affected by your requests.
